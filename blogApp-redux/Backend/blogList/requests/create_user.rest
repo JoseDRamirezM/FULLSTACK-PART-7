@@ -1,0 +1,23 @@
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "blogs": [],
+    "username": "Test",
+    "name": "Jose",
+    "password": "password"
+}
+
+# {
+#     "blogs": [],
+#     "username": "root",
+#     "name": "superuser",
+#     "password": "salainen"
+# }
+
+# {
+#     "blogs": ["60cbb1830694470cf89fa4d4", "60d0b07609677740404c2982"],
+#     "username": "Test 4 validation",
+#     "name": "David",
+#     "password": "david"
+# }
