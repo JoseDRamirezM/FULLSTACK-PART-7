@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { create_blog } from '../reducers/blogReducer'
 import { set_notification } from '../reducers/notificationReducer'
+import { Button } from 'react-bootstrap'
+
 
 const AddBlogForm = ({ toggle }) => {
 
@@ -76,7 +78,7 @@ const AddBlogForm = ({ toggle }) => {
             className="url"
           />
         </div>
-        <button type="submit" id="create-button">create</button>
+        <Button variant="primary" id="create-button">create</Button>
       </form>
     </div>
   )
