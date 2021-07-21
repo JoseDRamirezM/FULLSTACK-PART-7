@@ -1,6 +1,7 @@
 import React from 'react'
 import BlogList from './BlogList'
 import { useSelector } from 'react-redux'
+import { ListGroup } from 'react-bootstrap'
 
 const BlogsRender = ({ user }) => {
 
@@ -10,15 +11,26 @@ const BlogsRender = ({ user }) => {
     })
   )
 
+  const listStyle = {
+    fonstSize: 25
+  }
+
+
   return (
     <div className="blog-list">
-      {blogs.map(blog =>
-        <BlogList
-          key={blog.id}
-          blog={blog}
-          user={user}
-        />
-      )}
+      <h2>Blogs</h2>
+      <ListGroup variant="flush">
+        {blogs.map(blog =>
+          <ListGroup.Item key={blog.id} style={{ fontSize: 25 }}>
+            <div className="d-flex w-100 justify-content-between" style={listStyle}>
+              <BlogList
+                blog={blog}
+                user={user}
+              />
+            </div>
+          </ListGroup.Item>
+        )}
+      </ListGroup>
     </div>
   )
 }

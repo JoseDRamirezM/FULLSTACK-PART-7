@@ -15,6 +15,8 @@ const blogReducer = (state = [], action) => {
     return state.map(blog => blog.id !== action.result.id ? blog : action.result)
   case 'INIT_BLOGS':
     return action.content
+  case 'COMMENT':
+    return state.map(blog => blog.id !== action.result.id ? blog : action.result )
   default: return state
   }
 }
@@ -76,6 +78,28 @@ export const remove_blog = id => {
       } catch (exception) {
         dispatch(set_notification(exception.message, notificationDuration))
       }
+    }
+  }
+}
+
+export const comment_blog = (blog, comment) => {
+  return async dispatch => {
+    if (comment && blog) {
+      try {
+        const comments = [...blog.comments, comment]
+        const commentsObject = {
+          comments
+        }
+        const result = await blogService.comment(blog.id, commentsObject)
+        dispatch({
+          type: 'COMMENT',
+          result
+        })
+      } catch (exception) {
+        dispatch(set_notification(exception.message, notificationDuration))
+      }
+    } else {
+      dispatch(set_notification('comment something!', notificationDuration))
     }
   }
 }

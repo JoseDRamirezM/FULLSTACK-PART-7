@@ -30,8 +30,9 @@ const useCountry = (name) => {
           setCountry({...country, found: true})
         } 
       })
-      .catch( error => {
+      .catch( exception => {
         setCountry({found: false})
+        console.log(exception.message)
         
       })
 

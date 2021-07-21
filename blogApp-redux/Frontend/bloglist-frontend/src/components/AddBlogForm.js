@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { create_blog } from '../reducers/blogReducer'
 import { set_notification } from '../reducers/notificationReducer'
-import { Button } from 'react-bootstrap'
-
+import { Button, Form } from 'react-bootstrap'
+import FloatingLabel from 'react-bootstrap-floating-label'
 
 const AddBlogForm = ({ toggle }) => {
 
@@ -44,42 +44,67 @@ const AddBlogForm = ({ toggle }) => {
     setUrl('')
   }
 
+  const inputWidth = {
+    width: '60%'
+  }
+
   return (
     <div className="formDiv">
       <h2>create new</h2>
-      <form onSubmit={create}>
-        <div>
-                    title:
-          <input
-            type="text"
-            value={title}
-            id="Title"
-            onChange={handleSetTitle}
-            className="title"
-          />
+      <Form onSubmit={create}>
+        <div className="col-xs-3">
+          <Form.Group>
+            <FloatingLabel
+              controlId="floatingInputTitle"
+              label="Title"
+              className="mb-3"
+              style={inputWidth}
+              onChange={handleSetTitle}
+            >
+              <Form.Control
+                width="50"
+                type="text"
+                value={title}
+                id="Title"
+                className="title"
+              />
+            </FloatingLabel>
+          </Form.Group>
         </div>
-        <div>
-                    author:
-          <input
-            type="text"
-            value={author}
-            id="Author"
+        <Form.Group>
+          <FloatingLabel
+            controlId="floatingInputAuthor"
+            label="Author"
+            className="mb-3"
+            style={inputWidth}
             onChange={handleSetAuthor}
-            className="author"
-          />
-        </div>
-        <div>
-                    url:
-          <input
-            type="text"
-            id="BlogUrl"
-            value={url}
+          >
+            <Form.Control
+              type="text"
+              value={author}
+              id="Author"
+              className="author"
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group>
+          <FloatingLabel
+            controlId="floatingInputUrl"
+            label="Url"
+            className="mb-3"
+            style={inputWidth}
             onChange={handleSetUrl}
-            className="url"
-          />
-        </div>
-        <Button variant="primary" id="create-button">create</Button>
-      </form>
+          >
+            <Form.Control
+              type="text"
+              id="BlogUrl"
+              value={url}
+              className="url"
+            />
+          </FloatingLabel>
+          <Button variant="success" id="create-button" type="submit">create</Button>
+        </Form.Group>
+      </Form>
     </div>
   )
 }

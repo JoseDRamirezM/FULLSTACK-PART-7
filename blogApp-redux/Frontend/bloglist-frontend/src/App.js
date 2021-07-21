@@ -86,6 +86,7 @@ const App = () => {
       <h1>Blog app</h1>
       <Menu user={user} handleLogOut={handleLogOut} />
       <Notification />
+      <hr/>
       {user === null && loginForm()}
       <Switch>
         <Route path="/blogs/:id">
@@ -99,6 +100,7 @@ const App = () => {
         </Route>
         <Route path="/">
           {user !== null && addBlogForm()}
+          <hr/>
           {blogsRender()}
         </Route>
       </Switch>

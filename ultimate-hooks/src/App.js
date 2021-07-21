@@ -51,16 +51,16 @@ const App = () => {
   const [notes, noteService] = useResource('http://localhost:3005/notes')
   const [persons, personService] = useResource('http://localhost:3005/persons')
 
-  const handleNoteSubmit = (event) => {
+  const handleNoteSubmit = async (event) => {
     event.preventDefault()
-    noteService.create({ content: content.value })
-    noteService.getAll()
+    await noteService.create({ content: content.value })
+    await noteService.getAll()
   }
  
-  const handlePersonSubmit = (event) => {
+  const handlePersonSubmit = async (event) => {
     event.preventDefault()
-    personService.create({ name: name.value, number: number.value})
-    personService.getAll()
+    await personService.create({ name: name.value, number: number.value})
+    await personService.getAll()
   }
 
   return (
@@ -70,7 +70,7 @@ const App = () => {
         <input {...content} />
         <button>create</button>
       </form>
-      {notes.map(n => <p key={n.id}>{n.content}</p>)}
+      {notes.map(note => <p key={note.id}>{note.content}</p>)}
 
       <h2>persons</h2>
       <form onSubmit={handlePersonSubmit}>
@@ -78,7 +78,7 @@ const App = () => {
         number <input {...number} />
         <button>create</button>
       </form>
-      {persons.map(n => <p key={n.id}>{n.name} {n.number}</p>)}
+      {persons.map(person => <p key={person.id}>{person.name} {person.number}</p>)}
     </div>
   )
 }

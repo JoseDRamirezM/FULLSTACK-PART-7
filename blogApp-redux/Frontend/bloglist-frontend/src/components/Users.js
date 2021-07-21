@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Table, } from 'react-bootstrap'
+
 
 const Users = () => {
 
@@ -13,7 +15,7 @@ const Users = () => {
   return (
     <div>
       <h1>Users</h1>
-      <table>
+      <Table striped>
         <thead>
           <tr>
             <th></th>
@@ -28,7 +30,7 @@ const Users = () => {
             </tr>
           )}
         </tbody>
-      </table>
+      </Table>
 
     </div>
   )

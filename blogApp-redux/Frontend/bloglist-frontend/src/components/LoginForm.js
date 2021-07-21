@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { login_user } from '../reducers/userReducer'
+import { Button, Form } from 'react-bootstrap'
+import FloatingLabel from 'react-bootstrap-floating-label'
+
 
 const LoginForm = ({ toggle }) => {
 
@@ -21,30 +24,51 @@ const LoginForm = ({ toggle }) => {
     setUsername('')
   }
 
+  const inputWidth = {
+    width: '40%'
+  }
+
   return (
     <div>
-      <h2>log in to application</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-                username
-          <input
-            type="text"
-            value={username}
-            id="username"
+      <Form onSubmit={handleLogin}>
+        <Form.Group>
+          <Form.Label><h2>log in the app</h2></Form.Label>
+        </Form.Group>
+        <Form.Group>
+          <FloatingLabel
+            controlId="floatingInputUsername"
+            label="Username"
+            className="mb-3"
+            style={inputWidth}
             onChange={handleSetUsername}
-          />
-        </div>
-        <div>
-                password
-          <input
-            type="password"
-            value={password}
-            id="password"
+          >
+            <Form.Control
+              type="text"
+              placeholder="Username"
+              value={username}
+              id="username"
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group>
+          <FloatingLabel
+            controlId="floatingInputPassword"
+            label="Password"
+            style={inputWidth}
             onChange={handleSetPassword}
-          />
-        </div>
-        <button type="submit" id="login-button">login</button>
-      </form>
+            type="password"
+          >
+            <Form.Control
+              value={password}
+              placeholder="Password"
+              id="password"
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group>
+          <Button variant="primary" type="submit" id="login-button">login</Button>
+        </Form.Group>
+      </Form>
     </div>
   )
 }
