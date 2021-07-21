@@ -10,10 +10,15 @@ const useField = (type) => {
     setValue(event.target.value)
   }
 
+  const onReset = () => {
+    setValue('')
+  }
+
   return {
     type,
     value,
-    onChange
+    onChange,
+    onReset
   }
 }
 
@@ -55,12 +60,15 @@ const App = () => {
     event.preventDefault()
     await noteService.create({ content: content.value })
     await noteService.getAll()
+    await content.onReset()
   }
  
   const handlePersonSubmit = async (event) => {
     event.preventDefault()
     await personService.create({ name: name.value, number: number.value})
     await personService.getAll()
+    await name.onReset()
+    await number.onReset()
   }
 
   return (
@@ -70,7 +78,7 @@ const App = () => {
         <input {...content} />
         <button>create</button>
       </form>
-      {notes.map(note => <p key={note.id}>{note.content}</p>)}
+      {notes.map((note, index) => <p key={index}>{note.content}</p>)}
 
       <h2>persons</h2>
       <form onSubmit={handlePersonSubmit}>
@@ -78,7 +86,7 @@ const App = () => {
         number <input {...number} />
         <button>create</button>
       </form>
-      {persons.map(person => <p key={person.id}>{person.name} {person.number}</p>)}
+      {persons.map((person, index) => <p key={index}>{person.name} {person.number}</p>)}
     </div>
   )
 }

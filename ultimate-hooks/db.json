@@ -11,10 +11,6 @@
     {
       "content": "Test for ultimate hook",
       "id": 3
-    },
-    {
-      "content": "xd",
-      "id": 4
     }
   ],
   "persons": [
@@ -29,19 +25,9 @@
       "id": 2
     },
     {
-      "name": "Jose",
-      "number": "123-456",
-      "id": 3
-    },
-    {
       "name": "David",
       "number": "234-234-234",
-      "id": 4
-    },
-    {
-      "name": "sdas",
-      "number": "3424",
-      "id": 5
+      "id": 3
     }
   ]
 }
